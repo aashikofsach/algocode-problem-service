@@ -19,7 +19,7 @@ function addProblem(req, res, next) {
   }
 }
 
-function getProblems(req, res) {
+function getProblems(req, res , next) {
   // return res
   //   .status(StatusCodes.NOT_IMPLEMENTED)
   //   .json({ message: "Not implemented" });
@@ -31,7 +31,7 @@ function getProblems(req, res) {
     next(err);
   }
 }
-function getProblem(req, res) {
+function getProblem(req, res, next) {
   // not implemented
   try {
     throw new NotImplementedError("addProblem");
@@ -42,7 +42,7 @@ function getProblem(req, res) {
   //   .status(StatusCodes.NOT_IMPLEMENTED)
   //   .json({ message: "Not implemented" });
 }
-function updateProblem(req, res) {
+function updateProblem(req, res, next) {
   // not implemented
   try {
     throw new NotImplementedError("addProblem");
@@ -53,7 +53,7 @@ function updateProblem(req, res) {
   //   .status(StatusCodes.NOT_IMPLEMENTED)
   //   .json({ message: "Not implemented" });
 }
-function deleteProblem(req, res) {
+function deleteProblem(req, res, next) {
   // return res
   //   .status(StatusCodes.NOT_IMPLEMENTED)
   //   .json({ message: "Not implemented" });
