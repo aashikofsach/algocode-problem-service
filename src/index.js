@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 
 const { PORT } = require("./config/server.config");
-``;
 const apiRouter = require("./routes");
 const BaseError = require("./errors/base.error");
 const errorhandlers = require("./utils/errorHandler");
 const connectToDB = require("./config/db.config");
+const Probelm = require("./models/problem.model");
 
 const app = express();
 
@@ -32,8 +32,12 @@ app.listen(PORT, async () => {
 
   // just for checking 
 
-const Cat = mongoose.model('Cat', { name: String });
+// const Cat = mongoose.model('Cat', { name: String });
 
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save().then(() => console.log('meow'));
+// const kitty = new Cat({ name: 'Zildjian' });
+// kitty.save().then(() => console.log('meow'));
+
+// Probelm.create({
+
+// })
 });

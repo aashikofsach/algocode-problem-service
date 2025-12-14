@@ -1,19 +1,31 @@
 const { StatusCodes } = require("http-status-codes");
 const NotImplementedError = require("../errors/not-implemented.error");
 const errorhandlers = require("../utils/errorHandler");
+const { problemService } = require("../services");
+const {ProblemRepository} = require("../repositories");
+
+const ProblemService = new problemService(new ProblemRepository());
 
 function pingProblemController(req, res) {
   return res.json({ message: "Ping check is ok for problems controller" });
 }
 
-function addProblem(req, res, next) {
+async function addProblem(req, res, next) {
   // return res
   //   .status(StatusCodes.NOT_IMPLEMENTED)
   //   .json({ message: "Not implemented" });
 
   // not implemented
   try {
-    throw new NotImplementedError("addProblem");
+    // throw new NotImplementedError("addProblem");
+    const newProblem = await ProblemService.createProblem(req.body);
+    return res.status(StatusCodes.CREATED).json({
+      sucess : true ,
+      message : "Sucessfully created a problem",
+      error : {},
+      data : newProblem
+    })
+
   } catch (err) {
     next(err);
   }

@@ -33,6 +33,6 @@ const problemSchema = new mongoose.Schema({
   }
 });
 
-const Probelm = mongoose.Model("Probelm",problemSchema);
+const Problem = mongoose.model("Problem",problemSchema);
 
-module.exports = Probelm;
+module.exports = Problem;
