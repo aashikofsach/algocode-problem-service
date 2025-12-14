@@ -31,14 +31,21 @@ async function addProblem(req, res, next) {
   }
 }
 
-function getProblems(req, res , next) {
+ async function getProblems(req, res , next) {
   // return res
   //   .status(StatusCodes.NOT_IMPLEMENTED)
   //   .json({ message: "Not implemented" });
 
   // not implemented
   try {
-    throw new NotImplementedError("addProblem");
+     const allProblems = await ProblemService.getAllProblems();
+    return res.status(StatusCodes.OK).json({
+      sucess : true ,
+      message : "Sucessfully fetched all problems",
+      error : {},
+      data : allProblems
+    })
+    // throw new NotImplementedError("addProblem");
   } catch (err) {
     next(err);
   }
