@@ -50,10 +50,17 @@ async function addProblem(req, res, next) {
     next(err);
   }
 }
-function getProblem(req, res, next) {
+ async function getProblem(req, res, next) {
   // not implemented
   try {
-    throw new NotImplementedError("addProblem");
+    // throw new NotImplementedError("addProblem");
+     const problem = await ProblemService.getProblem(req.params.id);
+    return res.status(StatusCodes.OK).json({
+      sucess : true ,
+      message : "Sucessfully fetched the problem",
+      error : {},
+      data : problem
+    })
   } catch (err) {
     next(err);
   }
