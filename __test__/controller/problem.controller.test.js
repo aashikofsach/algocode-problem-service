@@ -24,4 +24,20 @@ describe("test", () => {
     expect(problemService.prototype.getAllProblems).toHaveBeenCalledTimes(1);
     expect(next).not.toHaveBeenCalled();
   });
+
+  test("get problem call next if service throw error", async () =>{
+    const mockError = new Error('id', 10)
+    console.log(mockError , "here we console error ")
+
+    problemService.prototype.getProblem.mockRejectedValue(mockError);
+
+    req.params = {id : 10};
+
+    await problemController.getProblem(req, res, next);
+
+    expect(next).toHaveBeenCalledWith(mockError);
+    expect(res.status).not.toHaveBeenCalled();
+    expect(res.json).not.toHaveBeenCalled()
+
+  })
 });
